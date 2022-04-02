@@ -1,11 +1,16 @@
-<section class="example-section">
+<section class="todo-section">
   <h2>My current to do list</h2>
-  <ul>
-    <li *ngFor="let todo of todos | async">
-      <mat-checkbox color="primary" [checked]="todo.active">
+  <ul id="todo-list">
+    <li *ngFor="let todo of todos$ | async">
+      <mat-checkbox
+        [ngClass]="{ 'crossed-out': todo.closed }"
+        color="primary"
+        [checked]="todo.active"
+        (change)="onCheck(todo)"
+        class="todo-checkbox"
+      >
         {{ todo.label }}
       </mat-checkbox>
     </li>
   </ul>
 </section>
-

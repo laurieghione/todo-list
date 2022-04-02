@@ -28,4 +28,3 @@ describe('TodosService', () => {
     expect(http.get).toHaveBeenCalledWith(`${environment.apiUrl}/todos`);
   });
 });
-

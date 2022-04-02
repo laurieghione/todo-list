@@ -47,4 +47,3 @@ describe('LoaderInterceptor', () => {
     expect(loaderService.hide).toHaveBeenCalled();
   }));
 });
-

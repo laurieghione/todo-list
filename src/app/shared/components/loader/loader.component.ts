@@ -12,4 +12,3 @@ export class LoaderComponent {
 
   constructor(private readonly loaderService: LoaderService) {}
 }
-

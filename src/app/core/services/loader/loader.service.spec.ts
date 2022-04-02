@@ -27,4 +27,3 @@ describe('LoaderService', () => {
     expect(service.isLoading.next).toHaveBeenCalledWith(false);
   });
 });
-

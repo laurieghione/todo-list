@@ -15,4 +15,3 @@ export class LoaderService {
     this.isLoading.next(false);
   }
 }
-
