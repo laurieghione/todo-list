@@ -1,0 +1,11 @@
+<section class="example-section">
+  <h2>My current to do list</h2>
+  <ul>
+    <li *ngFor="let todo of todos | async">
+      <mat-checkbox color="primary" [checked]="todo.active">
+        {{ todo.label }}
+      </mat-checkbox>
+    </li>
+  </ul>
+</section>
+
