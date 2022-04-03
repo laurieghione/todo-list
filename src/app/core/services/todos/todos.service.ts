@@ -15,4 +15,12 @@ export class TodosService {
   public getAll(): Observable<Todo[]> {
     return this.http.get<Todo[]>(this.endpoint);
   }
+
+  public create(todo: Todo): Observable<Todo> {
+    return this.http.post<Todo>(this.endpoint, todo);
+  }
+
+  public update(todo: Todo, id: number): Observable<Todo> {
+    return this.http.put<Todo>(`${this.endpoint}/${id}`, todo);
+  }
 }

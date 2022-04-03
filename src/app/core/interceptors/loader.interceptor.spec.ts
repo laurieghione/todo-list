@@ -1,23 +1,24 @@
 import { HttpRequest } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
-import { LoaderService } from '@services/loader/loader.service';
+import { Store } from '@ngrx/store';
+import { provideMockStore } from '@ngrx/store/testing';
 import { of } from 'rxjs';
-import { MockLoaderService } from '../mocks/loaderService.mock';
+import { TodoState } from 'src/app/store/reducers/todos.reducer';
 import { LoaderInterceptor } from './loader.interceptor';
 
 describe('LoaderInterceptor', () => {
-  let loaderService: LoaderService;
   let interceptor: LoaderInterceptor;
+  let store: Store<TodoState>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [LoaderInterceptor, { provide: LoaderService, useClass: MockLoaderService }],
+      providers: [LoaderInterceptor, provideMockStore()],
     });
 
     interceptor = TestBed.inject(LoaderInterceptor);
-    loaderService = TestBed.inject(LoaderService);
+    store = TestBed.inject(Store);
   });
 
   it('should be created', () => {
@@ -25,9 +26,7 @@ describe('LoaderInterceptor', () => {
   });
 
   it('should show and hide loader when intercept is called', fakeAsync(() => {
-    spyOn(loaderService, 'show');
-    spyOn(loaderService, 'hide');
-
+    spyOn(store, 'dispatch');
     const next: any = {
       handle: () => {
         return of((subscriber: any) => {
@@ -39,11 +38,11 @@ describe('LoaderInterceptor', () => {
     const requestMock = new HttpRequest('GET', '/test');
 
     interceptor.intercept(requestMock, next).subscribe(() => {
-      expect(loaderService.show).toHaveBeenCalled();
+      expect(store.dispatch).toHaveBeenCalledWith({ type: '[Loader] Show loader' });
     });
 
     tick();
 
-    expect(loaderService.hide).toHaveBeenCalled();
+    expect(store.dispatch).toHaveBeenCalledWith({ type: '[Loader] Hide loader' });
   }));
 });

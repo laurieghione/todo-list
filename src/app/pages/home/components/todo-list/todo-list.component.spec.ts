@@ -7,6 +7,7 @@ import { TodoListComponent } from './todo-list.component';
 import { TodoState } from 'src/app/store/reducers/todos.reducer';
 import { Todo } from '@models/todo.model';
 import { selectTodos } from 'src/app/store/selectors/todos.selector';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('TodoListComponent', () => {
   let component: TodoListComponent;
@@ -16,7 +17,7 @@ describe('TodoListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [TodoListComponent],
-      imports: [SharedModule],
+      imports: [SharedModule, RouterTestingModule],
       providers: [{ provide: TodosService, useClass: MockTodosService }, provideMockStore()],
     }).compileComponents();
   });

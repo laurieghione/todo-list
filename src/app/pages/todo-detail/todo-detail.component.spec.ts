@@ -4,7 +4,6 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { of } from 'rxjs';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { TodoState } from 'src/app/store/reducers/todos.reducer';
-import { selectTodo } from 'src/app/store/selectors/todos.selector';
 
 import { TodoDetailComponent } from './todo-detail.component';
 

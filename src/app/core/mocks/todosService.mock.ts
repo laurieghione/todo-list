@@ -3,6 +3,8 @@ import { Scenarios } from 'data-mocks';
 export class MockTodosService {
   getAll() {}
 
+  create() {}
+
   static todosScenarios: Scenarios = {
     default: [
       {
@@ -16,7 +18,14 @@ export class MockTodosService {
           { id: 5, label: 'Finir the last of us 2', active: false },
         ],
         responseCode: 200,
-        delay: 1500,
+        delay: 1300,
+      },
+      {
+        url: /todos/,
+        method: 'POST',
+        response: { id: 6 },
+        responseCode: 200,
+        delay: 1300,
       },
     ],
   };

@@ -15,9 +15,7 @@ import { selectTodo } from 'src/app/store/selectors/todos.selector';
 export class TodoDetailComponent implements OnInit {
   public todo$: Observable<Todo>;
 
-  constructor(private readonly store: Store<TodoState>, private readonly activatedRoute: ActivatedRoute) {
-    this.store.dispatch(getTodoList());
-  }
+  constructor(private readonly store: Store<TodoState>, private readonly activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params: ParamMap) => {

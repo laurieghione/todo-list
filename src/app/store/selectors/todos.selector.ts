@@ -9,3 +9,5 @@ export const selectTodo = (id: number) =>
   createSelector(getState, (state: TodoState) =>
     state.todos.length ? state.todos.find((todo) => todo.id === id) : null,
   );
+
+export const selectIsLoading = createSelector(getState, (state: TodoState) => state.isLoading);

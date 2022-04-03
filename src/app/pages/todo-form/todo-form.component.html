@@ -1,0 +1,19 @@
+<h1>Create new todo</h1>
+<form class="todo-form" [formGroup]="todoForm">
+  <mat-form-field appearance="outline">
+    <mat-label>Title</mat-label>
+    <input matInput required formControlName="title" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Description</mat-label>
+    <textarea
+      formControlName="description"
+      matInput
+      cdkTextareaAutosize
+      #autosize="cdkTextareaAutosize"
+      cdkAutosizeMinRows="3"
+      cdkAutosizeMaxRows="5"
+    ></textarea>
+  </mat-form-field>
+  <button [disabled]="!todoForm.valid" mat-raised-button color="primary" (click)="onSubmit()">Create</button>
+</form>

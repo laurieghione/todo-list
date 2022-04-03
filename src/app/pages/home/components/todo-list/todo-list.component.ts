@@ -15,11 +15,15 @@ export class TodoListComponent {
   public todos$: Observable<Todo[]>;
 
   constructor(private readonly store: Store<TodoState>) {
-    this.todos$ = this.store.select(selectTodos);
+    this.getTodos();
   }
 
   public onCheck(todo: Todo): void {
     this.store.dispatch(updateTodo({ todo: { ...todo, active: !todo.active } }));
+    this.getTodos();
+  }
+
+  private getTodos(): void {
     this.todos$ = this.store.select(selectTodos);
   }
 }

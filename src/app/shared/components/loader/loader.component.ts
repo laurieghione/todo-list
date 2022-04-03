@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { LoaderService } from '@services/loader/loader.service';
-import { Subject } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { TodoState } from 'src/app/store/reducers/todos.reducer';
+import { selectIsLoading } from 'src/app/store/selectors/todos.selector';
 
 @Component({
   selector: 'app-loader',
@@ -8,9 +10,9 @@ import { Subject } from 'rxjs';
   styleUrls: ['./loader.component.scss'],
 })
 export class LoaderComponent {
-  isLoading: Subject<boolean>;
+  isLoading: Observable<boolean>;
 
-  constructor(private readonly loaderService: LoaderService) {
-    this.isLoading = this.loaderService.isLoading;
+  constructor(private readonly store: Store<TodoState>) {
+    this.isLoading = this.store.select(selectIsLoading);
   }
 }
