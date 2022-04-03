@@ -1,5 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { provideMockStore } from '@ngrx/store/testing';
 import { SharedModule } from '@shared/shared.module';
 import { AppComponent } from './app.component';
 
@@ -9,6 +10,7 @@ describe('AppComponent', () => {
       declarations: [AppComponent],
       imports: [SharedModule],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      providers: [provideMockStore()],
     }).compileComponents();
   });
 

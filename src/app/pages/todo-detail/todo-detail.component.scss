@@ -1,0 +1,36 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.card {
+  max-width: 400px;
+  margin-top: 20px;
+
+  .header-card {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+
+    .card-avatar {
+      border-radius: 50%;
+      background-color: var(--color-light-grey);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .title-card {
+      margin: 0;
+    }
+
+    .card-header-check-icon {
+      color: var(--color-green);
+    }
+  }
+
+  .card-content {
+    text-align: center;
+  }
+}

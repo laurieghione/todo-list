@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { getTodoList, getTodoListFailed, getTodoListSuccess } from '../actions/todos.action';
-import { TodosService } from '@services/todos/todos.service';
 import { catchError, map, mergeMap } from 'rxjs/operators';
-import { Todo } from '@models/todo.model';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { TodosService } from 'src/app/core/services/todos/todos.service';
+import { Todo } from 'src/app/core/models/todo.model';
 
 @Injectable()
 export class TodoEffects {

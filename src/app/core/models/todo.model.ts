@@ -3,4 +3,5 @@ export interface Todo {
   label: string;
   active: boolean;
   closed?: boolean;
+  description?: string;
 }

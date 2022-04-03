@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Todo } from '@models/todo.model';
 import { TodoState } from 'src/app/store/reducers/todos.reducer';
 import { Store } from '@ngrx/store';
-import { getTodoList, updateTodo } from 'src/app/store/actions/todos.action';
+import { updateTodo } from 'src/app/store/actions/todos.action';
 import { selectTodos } from 'src/app/store/selectors/todos.selector';
 
 @Component({
@@ -11,14 +11,10 @@ import { selectTodos } from 'src/app/store/selectors/todos.selector';
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.scss'],
 })
-export class TodoListComponent implements OnInit {
+export class TodoListComponent {
   public todos$: Observable<Todo[]>;
 
   constructor(private readonly store: Store<TodoState>) {
-    this.store.dispatch(getTodoList());
-  }
-
-  ngOnInit(): void {
     this.todos$ = this.store.select(selectTodos);
   }
 
