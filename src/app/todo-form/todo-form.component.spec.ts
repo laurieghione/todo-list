@@ -50,7 +50,7 @@ describe('TodoFormComponent', () => {
     component.onSubmit();
 
     expect(todosService.create).toHaveBeenCalledWith({ label: 'test', description: 'desc', active: false });
-    expect(router.navigate).toHaveBeenCalledWith(['/home']);
+    expect(router.navigate).toHaveBeenCalledWith(['']);
     expect(store.dispatch).toHaveBeenCalled();
   });
 

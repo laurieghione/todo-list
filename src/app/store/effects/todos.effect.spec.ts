@@ -6,23 +6,20 @@ import { TodoEffects } from './todos.effect';
 import { Todo } from 'src/app/core/models/todo.model';
 import { TodosService } from 'src/app/core/services/todos/todos.service';
 import { MockTodosService } from 'src/app/core/mocks/todosService.mock';
-import { initialState, todosReducer, TodoState } from '../reducers/todos.reducer';
-import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { getTodoList, getTodoListFailed, getTodoListSuccess } from '../actions/todos.action';
 import { rootEffectsInit } from '@ngrx/effects';
+import { todosReducer } from '../reducers/todos.reducer';
 
 describe('TodoEffects', () => {
   let effects: TodoEffects;
   let actions: Observable<any>;
   let todoService: TodosService;
-  let store: MockStore<TodoState>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [StoreModule.forRoot({ todosStore: todosReducer })],
       providers: [
         TodoEffects,
-        provideMockStore({ initialState }),
         provideMockActions(() => actions),
         {
           provide: TodosService,
@@ -30,7 +27,6 @@ describe('TodoEffects', () => {
         },
       ],
     });
-    store = TestBed.inject(MockStore);
     todoService = TestBed.inject(TodosService);
     effects = TestBed.inject(TodoEffects);
     actions = of(getTodoList);

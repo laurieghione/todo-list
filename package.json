@@ -7,7 +7,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test --watch=false",
+    "test": "ng test  --no-watch",
     "lint": "eslint \"./src/**/*.{js,json,ts,scss,html}\" --quiet --fix",
     "format": "prettier --write -c \"./src/**/*.{js,json,ts,scss,html}\"",
     "prepare": "husky install"
@@ -28,8 +28,7 @@
     "@ngrx/store": "^13.1.0",
     "@ngrx/store-devtools": "^13.1.0",
     "data-mocks": "^4.1.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.0.0",
+
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -50,6 +49,8 @@
     "@typescript-eslint/eslint-plugin": "5.11.0",
     "@typescript-eslint/parser": "5.11.0",
     "eslint": "^8.2.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "git-precommit-checks": "^3.0.7",
     "husky": "^7.0.4",
     "jasmine-core": "~4.0.0",

@@ -43,7 +43,7 @@ export class TodoFormComponent {
 
     this.todosService.create(todo).subscribe((newTodo: Todo) => {
       this.store.dispatch(createTodo({ todo: { ...todo, id: newTodo.id } }));
-      this.router.navigate(['/home']);
+      this.router.navigate(['']);
     });
   }
 }

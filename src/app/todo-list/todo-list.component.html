@@ -1,0 +1,18 @@
+<h1 class="title">Welcome to our new Todo application</h1>
+
+<div class="container">
+  <button [routerLink]="['/todo/new']" id="create-button" mat-raised-button color="primary">Create</button>
+
+  <section class="todo-section">
+    <h2>My current to do list</h2>
+    <ul class="todo-list">
+      <li *ngFor="let todo of todos$ | async">
+        <mat-checkbox color="primary" [checked]="todo.active" (change)="onCheck(todo)" class="todo-checkbox">
+        </mat-checkbox>
+        <a class="todo" [ngClass]="{ 'crossed-out': todo.active }" [routerLink]="['/todo', todo.id]">{{
+          todo.label
+        }}</a>
+      </li>
+    </ul>
+  </section>
+</div>

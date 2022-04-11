@@ -15,5 +15,7 @@
       cdkAutosizeMaxRows="5"
     ></textarea>
   </mat-form-field>
-  <button [disabled]="!todoForm.valid" mat-raised-button color="primary" (click)="onSubmit()">Create</button>
+  <button type="submit" [disabled]="!todoForm.valid" mat-raised-button color="primary" (click)="onSubmit()">
+    Create
+  </button>
 </form>

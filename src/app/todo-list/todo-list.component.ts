@@ -12,18 +12,11 @@ import { selectTodos } from 'src/app/store/selectors/todos.selector';
   styleUrls: ['./todo-list.component.scss'],
 })
 export class TodoListComponent {
-  public todos$: Observable<Todo[]>;
+  public todos$: Observable<Todo[]> = this.store.select(selectTodos);
 
-  constructor(private readonly store: Store<TodoState>) {
-    this.getTodos();
-  }
+  constructor(private readonly store: Store<TodoState>) {}
 
   public onCheck(todo: Todo): void {
     this.store.dispatch(updateTodo({ todo: { ...todo, active: !todo.active } }));
-    this.getTodos();
-  }
-
-  private getTodos(): void {
-    this.todos$ = this.store.select(selectTodos);
   }
 }

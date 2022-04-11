@@ -1,11 +1,4 @@
-import {
-  createTodo,
-  getTodoList,
-  getTodoListSuccess,
-  hideLoader,
-  showLoader,
-  updateTodo,
-} from '../actions/todos.action';
+import { createTodo, getTodoListSuccess, hideLoader, showLoader, updateTodo } from '../actions/todos.action';
 import { initialState, todosReducer, TodoState } from './todos.reducer';
 
 let todoState: TodoState;
@@ -44,16 +37,6 @@ describe('TodoReducer', () => {
     expect(state).toEqual(newState);
   });
 
-  it('should get todos when getTodoList is called', () => {
-    const action = getTodoList();
-
-    const state = todosReducer(todoState, action);
-
-    expect(state.todos.length).toEqual(2);
-    expect(state.todos[0].id).toEqual(0);
-    expect(state.todos[1].id).toEqual(1);
-  });
-
   it('should isLoading return true when showLoader is called', () => {
     const action = showLoader();
 
@@ -89,11 +72,10 @@ describe('TodoReducer', () => {
 
     const state = todosReducer(todoState, action);
 
-    expect(state.todos[0].id).toEqual(1);
+    expect(state.todos[0].id).toEqual(0);
     expect(state.todos[0].active).toBeFalse();
-    expect(state.todos[1].id).toEqual(0);
+    expect(state.todos[1].id).toEqual(1);
     expect(state.todos[1].active).toBeFalse();
-    expect(state.todos[1].closed).toBeTrue();
   });
 
   it('should update a todo undone to done and update the state when updateTodo is called', () => {
@@ -105,9 +87,7 @@ describe('TodoReducer', () => {
 
     expect(state.todos[0].id).toEqual(0);
     expect(state.todos[0].active).toBeTrue();
-    expect(state.todos[0].closed).toBeUndefined();
     expect(state.todos[1].id).toEqual(1);
     expect(state.todos[1].active).toBeTrue();
-    expect(state.todos[1].closed).toBeUndefined();
   });
 });
